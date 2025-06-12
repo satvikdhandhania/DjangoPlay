@@ -69,6 +69,8 @@ python manage.py shell
 Add Multiple Records
 
 You can add multiple records by making a list of Member objects, and execute .save() on each entry:
+>>> from members.models import Member 
+>>> Member.objects.all() 
 >>> member1 = Member(firstname='Tobias', lastname='Refsnes')
 >>> member2 = Member(firstname='Linus', lastname='Refsnes')
 >>> member3 = Member(firstname='Lene', lastname='Refsnes')

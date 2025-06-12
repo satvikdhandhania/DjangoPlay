@@ -157,11 +157,38 @@ Select an option: 2
   
 
 
-Structure of the Project
+## Structure of the Project
 ```
 my_tennis_club/ -> Project
 /templates -> HTML templates that will be used by the views and rendered to the browser based on main.html
 urls.py -> contains the URL routing for the project
 views.py -> contains the logic for the views, which will render the HTML templates using the data from the models and sqlite3 database
 setting.py -> contains the settings for the project, such as database configuration, installed apps, middleware, etc. Disable DEBUG mode and add ALLOWED_HOSTS = '*' to allow all hosts before running in production
+admin.py -> contains the configuration for the Django admin interface, which allows you to manage the models and data in the database
 ```
+
+
+# Admin Interface
+To use the Django admin interface, you need to create a superuser account. Run the following command:
+```
+python manage.py createsuperuser
+Username (leave blank to use 'satvikdhandhania'): 
+Email address: kivtas@gmail.com
+Password: helloworld
+```
+You will be prompted to enter a username, email, and password for the superuser account. After creating the superuser, you can access the admin interface by navigating to 
+[http://127.0.0.1:8000/admin/login](http://127.0.0.1:8000/admin/login)
+
+
+# Add the Models to the Admin Interface
+Update admin.py file in the members app to register the Member model:
+```python
+from django.contrib import admin
+from .models import Member
+@admin.register(Member)
+class MemberAdmin(admin.ModelAdmin):
+    list_display = ('id', 'firstname', 'lastname', 'phone', 'joined_date')
+    search_fields = ('firstname', 'lastname')
+```
+Now, when you access the admin interface, you will see the Member model listed, and you can add, edit, and delete members from the database.
+

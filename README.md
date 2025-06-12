@@ -155,3 +155,13 @@ Please select a fix:
 Select an option: 2
 </span>
   
+
+
+Structure of the Project
+```
+my_tennis_club/ -> Project
+/templates -> HTML templates that will be used by the views and rendered to the browser based on main.html
+urls.py -> contains the URL routing for the project
+views.py -> contains the logic for the views, which will render the HTML templates using the data from the models and sqlite3 database
+setting.py -> contains the settings for the project, such as database configuration, installed apps, middleware, etc. Disable DEBUG mode and add ALLOWED_HOSTS = '*' to allow all hosts before running in production
+```
